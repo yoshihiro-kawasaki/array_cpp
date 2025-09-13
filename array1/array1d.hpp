@@ -1,5 +1,5 @@
-#ifndef ARRAY1D_HPP
-#define ARRAY1D_HPP
+#ifndef ARRAY1D_HPP_
+#define ARRAY1D_HPP_
 
 #include "array_base.hpp"
 
@@ -10,19 +10,19 @@ namespace array
     public:
         Array1D() : ArrayBase<T>({0}) { }
 
-        explicit Array1D(const types::Size n1) : ArrayBase<T>(std::initializer_list<types::Size>{n1}) { }
+        explicit Array1D(const std::size_t n1) : ArrayBase<T>(std::initializer_list<std::size_t>{n1}) { }
 
-        inline types::Size Dim1() const { return this->shape_[0]; }
+        inline std::size_t Dim1() const { return this->shape_[0]; }
 
-        inline T& operator()(const types::Index i) {
+        inline T& operator()(const std::size_t i) {
             return this->ptr_raw_data_[i];
         }
 
-        inline const T& operator()(const types::Index i) const {
+        inline const T& operator()(const std::size_t i) const {
             return this->ptr_raw_data_[i];
         }
 
-        T& At(const types::Size i) {
+        T& At(const std::size_t i) {
         #ifdef ENABLE_DEBUG
             if (i >= Dim1()) {
                 throw std::out_of_range("Array1D index out of range");
@@ -31,7 +31,7 @@ namespace array
             return (*this)(i);
         }
 
-        const T& At(const types::Size i) const {
+        const T& At(const std::size_t i) const {
         #ifdef ENABLE_DEBUG
             if (i >= Dim1()) {
                 throw std::out_of_range("Array1D index out of range");
@@ -40,14 +40,14 @@ namespace array
             return (*this)(i);
         }
 
-        void Resize(const types::Size n1) {
-            std::vector<types::Size> shape_new = {n1};
+        void Resize(const std::size_t n1) {
+            std::vector<std::size_t> shape_new = {n1};
             if (shape_new != this->shape_) {
                 ArrayBase<T>::Resize(shape_new);
             }
         }
 
-        virtual types::Size  NumDimensions() const override {
+        virtual std::size_t  NumDimensions() const noexcept override {
             return 1;
         };
 
@@ -55,4 +55,4 @@ namespace array
     };
 }
 
-#endif /* ARRAY1D_HPP */
+#endif /* ARRAY1D_HPP_ */
