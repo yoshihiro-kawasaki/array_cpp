@@ -6,6 +6,7 @@
 #include <initializer_list>
 #include <limits>
 #include <cmath>
+#include <stdexcept>
 
 #include "array1d.hpp"
 
