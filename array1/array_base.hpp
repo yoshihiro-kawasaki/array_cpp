@@ -34,6 +34,12 @@ namespace array {
             AllocateArray();
         }
 
+        ArrayBase(std::initializer_list<std::size_t> shape, const T value)
+        : shape_(shape), size_(ComputeSize(shape_)), ptr_raw_data_(nullptr), status_(ArrayStatus::Empty) {
+            AllocateArray();
+            Fill(value);
+        }
+
         // Copy constructor
         ArrayBase(const ArrayBase& other) noexcept
             : shape_(other.shape_), size_(other.size_), ptr_raw_data_(nullptr), status_(ArrayStatus::Empty) {

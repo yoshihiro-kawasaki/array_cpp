@@ -40,19 +40,23 @@ void add3(const array::Array3D<double> &a, const array::Array3D<double> &b, arra
 
 int main() {
     // const int N = 1000;
-    // array::Array1D<double> a(N), b(N), c(N);
-    // a.Fill(1.0);
-    // b.Fill(2.0);
+    // array::Array1D<double> a(N, 1.0), b(N, 2.0), c(N);
     // add1(a, b, c);
+    // for (int i = 0; i < 10; ++i) {
+    //     std::cout << a(i) << " " << b(i) << " " << c(i) << std::endl;
+    // }
 
     std::cout << "Array2D" << std::endl;
     const int N = 100;
-    array::Array2D<double> a(N, N), b(N, N), c(N, N);
-    a.Fill(1.0);
-    b.Fill(2.0);
+    array::Array2D<double> a(N, N, 1.0), b(N, N, 2.0), c(N, N);
     add2(a, b, c);
     array::Array1D<double> d = c.Flatten();
     std::cout << d.Size() << std::endl;
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            std::cout << a(i, j) << " " << b(i, j) << " " << c(i, j) << std::endl;
+        }
+    }
 
     return 0;
 }

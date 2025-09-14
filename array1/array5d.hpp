@@ -13,6 +13,9 @@ namespace array
         explicit Array5D(const std::size_t n1, const std::size_t n2, const std::size_t n3, const std::size_t n4, const std::size_t n5)
         : ArrayBase<T>({n1, n2, n3, n4, n5}) { }
 
+        Array5D(const std::size_t n1, const std::size_t n2, const std::size_t n3, const std::size_t n4, const std::size_t n5, const T value)
+        : ArrayBase<T>({n1, n2, n3, n4, n5}, value) { }
+
         inline std::size_t Dim1() const { return this->shape_[0]; }
         inline std::size_t Dim2() const { return this->shape_[1]; }
         inline std::size_t Dim3() const { return this->shape_[2]; }

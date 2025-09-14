@@ -12,6 +12,9 @@ namespace array
 
         explicit Array1D(const std::size_t n1) : ArrayBase<T>(std::initializer_list<std::size_t>{n1}) { }
 
+        Array1D(const std::size_t n1, const T value)
+        : ArrayBase<T>(std::initializer_list<std::size_t>{n1}, value) { }
+
         inline std::size_t Dim1() const { return this->shape_[0]; }
 
         inline T& operator()(const std::size_t i) {

@@ -13,6 +13,9 @@ namespace array
 
         explicit Array2D(const std::size_t n1, const std::size_t n2) : ArrayBase<T>({n1, n2}) { }
 
+        Array2D(const std::size_t n1, const std::size_t n2, const T value)
+        : ArrayBase<T>({n1, n2}, value) { }
+
         inline std::size_t Dim1() const { return this->shape_[0]; }
         inline std::size_t Dim2() const { return this->shape_[1]; }
 
