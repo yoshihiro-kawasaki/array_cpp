@@ -46,17 +46,28 @@ int main() {
     //     std::cout << a(i) << " " << b(i) << " " << c(i) << std::endl;
     // }
 
-    std::cout << "Array2D" << std::endl;
-    const int N = 100;
-    array::Array2D<double> a(N, N, 1.0), b(N, N, 2.0), c(N, N);
-    add2(a, b, c);
-    array::Array1D<double> d = c.Flatten();
-    std::cout << d.Size() << std::endl;
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            std::cout << a(i, j) << " " << b(i, j) << " " << c(i, j) << std::endl;
-        }
-    }
+    // std::cout << "Array2D" << std::endl;
+    // const int N = 100;
+    // array::Array2D<double> a(N, N, 1.0), b(N, N, 2.0), c(N, N);
+    // add2(a, b, c);
+    // array::Array1D<double> d = c.Flatten();
+    // std::cout << d.Size() << std::endl;
+    // for (int i = 0; i < 3; ++i) {
+    //     for (int j = 0; j < 3; ++j) {
+    //         std::cout << a(i, j) << " " << b(i, j) << " " << c(i, j) << std::endl;
+    //     }
+    // }
+
+    array::Array2D<int> a(3, 4);
+    std::cout << a.Dim1() << " " << a.Dim2() << " " << a.Data() << std::endl;
+
+    // a.Reshape(4, 3);
+    a.Resize(5, 6);
+    std::cout << a.Dim1() << " " << a.Dim2() << " " << a.Data() << std::endl;    
+
+    array::Array3D<int> b(3, 4, 5);
+    b.Reshape(3, 5, 4);
+    std::cout << b.Dim1() << " " << b.Dim2() << " " << b.Dim3() << std::endl;
 
     return 0;
 }

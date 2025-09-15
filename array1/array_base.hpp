@@ -211,7 +211,7 @@ namespace array {
             }
         }
 
-        std::size_t ComputeSize(std::vector<std::size_t>& shape) {
+        std::size_t ComputeSize(const std::vector<std::size_t>& shape) const {
             if (shape.empty()) return 0;
             std::size_t size = 1;
             for (std::size_t dim : shape) {
@@ -230,6 +230,20 @@ namespace array {
                 shape_ = shape;
                 size_ = ComputeSize(shape_);
                 AllocateArray();
+            }
+        }
+
+        void Reshape(const std::vector<std::size_t> &shape) {
+            if (IsEmpty()) {
+                shape_ = shape;
+                size_ = ComputeSize(shape_);
+                AllocateArray();
+            } else {
+                std::size_t size = ComputeSize(shape);
+                if (size != size_) {
+                    throw std::runtime_error("Reshape size mismatch");
+                }
+                shape_ = shape;
             }
         }
     };

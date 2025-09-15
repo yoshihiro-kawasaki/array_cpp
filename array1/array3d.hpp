@@ -57,6 +57,13 @@ namespace array
             }
         }
 
+        void Reshape(const std::size_t n1, const std::size_t n2, const std::size_t n3) {
+            std::vector<std::size_t> shape_new = {n1, n2, n3};
+            if (shape_new != this->shape_) {
+                ArrayBase<T>::Reshape(shape_new);
+            }
+        }
+
     private:
     };
 }
