@@ -58,16 +58,32 @@ int main() {
     //     }
     // }
 
-    array::Array2D<int> a(3, 4);
-    std::cout << a.Dim1() << " " << a.Dim2() << " " << a.Data() << std::endl;
+    // array::Array2D<int> a(3, 4);
+    // std::cout << a.Dim1() << " " << a.Dim2() << " " << a.Data() << std::endl;
 
-    // a.Reshape(4, 3);
-    a.Resize(5, 6);
-    std::cout << a.Dim1() << " " << a.Dim2() << " " << a.Data() << std::endl;    
+    // // a.Reshape(4, 3);
+    // a.Resize(5, 6);
+    // std::cout << a.Dim1() << " " << a.Dim2() << " " << a.Data() << std::endl;    
 
-    array::Array3D<int> b(3, 4, 5);
-    b.Reshape(3, 5, 4);
-    std::cout << b.Dim1() << " " << b.Dim2() << " " << b.Dim3() << std::endl;
+    // array::Array3D<int> b(3, 4, 5);
+    // b.Reshape(3, 5, 4);
+    // std::cout << b.Dim1() << " " << b.Dim2() << " " << b.Dim3() << std::endl;
+
+    array::Array2D<double> b(3, 5);
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            b(i, j) = i * j + 1;
+        }
+    }
+    array::Array2D<double> c;
+    c.ResizeLike(b);
+    c.Copy(b);
+
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            std::cout << b(i, j) << " " << c(i, j) << std::endl;
+        }
+    }
 
     return 0;
 }

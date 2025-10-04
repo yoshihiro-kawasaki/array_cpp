@@ -151,6 +151,13 @@ namespace array {
             std::swap(ptr_raw_data_, other.ptr_raw_data_);
         }
 
+        void Copy(const ArrayBase& other) {
+            if (!HasSameShape(other)) {
+                throw std::invalid_argument("Copy: shape mismatch");
+            }
+            std::copy(other.Begin(), other.End(), Begin());
+        }
+
         bool CheckNaN() const {
             static_assert(std::is_floating_point<T>::value, "CheckNaN requires floating point type");
             if (IsEmpty()) return false;
